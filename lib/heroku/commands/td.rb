@@ -12,6 +12,8 @@ module Heroku::Command
         return -1
       end
 
+      $prog = 'heroku td'
+
       method = TreasureData::Command::List.get_method(cmd)
       unless method
         $stderr.puts "'#{cmd}' is not a td command. Run '#{$prog}' to show the list."
