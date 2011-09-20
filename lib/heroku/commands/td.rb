@@ -1,5 +1,6 @@
 module Heroku::Command
 
+  # manage treasure data hadoop service
   class Td < BaseWithApp
     def index
       r = TreasureData::Command::Runner.new
