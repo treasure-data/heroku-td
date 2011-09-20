@@ -1,5 +1,3 @@
-require 'td/command/runner'
-
 module Heroku::Command
 
   class Td < BaseWithApp
