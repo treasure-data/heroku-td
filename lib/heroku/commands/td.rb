@@ -8,7 +8,7 @@ module Heroku::Command
     def index
       cmd = args.shift
       unless cmd
-        # TODO: show usage
+        puts "TODO: show usage"
         return -1
       end
 
