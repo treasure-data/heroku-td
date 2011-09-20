@@ -13,7 +13,9 @@ module Heroku::Command
       end
 
       puts 'apikey!!!!!!!'
-      p heroku.config_vars(app)['TREASURE_DATA_API_KEY']
+      apikey =  heroku.config_vars(app)['TREASURE_DATA_API_KEY']
+      ENV['TREASURE_DATA_API_KEY'] = apikey
+      p ENV
 
       method = TreasureData::Command::List.get_method(cmd)
       unless method
