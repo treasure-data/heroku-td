@@ -20,3 +20,7 @@ Heroku CLI plugin for Treasure Data Cloud.
     $ heroku td query -w -d production_db "SELECT COUNT(1) FROM rails_access"
 
 To update, you must re-install the plugin using `heroku plugins:install`.
+
+# See
+
+* [Using Heroku CLI Plugins](http://devcenter.heroku.com/articles/using-cli-plugins)
