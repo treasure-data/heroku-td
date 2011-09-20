@@ -1,5 +1,5 @@
 require 'td'
-require 'td/command/td'
+require 'td/command/list'
 
 module Heroku::Command
 
