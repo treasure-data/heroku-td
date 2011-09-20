@@ -12,6 +12,10 @@ module Heroku::Command
         return -1
       end
 
+      # modify ARGV for td
+      ARGV.clear
+      ARGV.concat(args)
+
       # set apikey
       apikey =  heroku.config_vars(app)['TREASURE_DATA_API_KEY']
       TreasureData::Config.apikey = apikey
