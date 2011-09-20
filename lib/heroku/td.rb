@@ -4,5 +4,5 @@ if Heroku::VERSION < '2.0.0'
 elsif Heroku::VERSION >= '3.0.0'
   puts "Please update your heroku-rds plugin"
 else
-  require 'heroku/commands/rds'
+  require 'heroku/commands/td'
 end
