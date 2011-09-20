@@ -12,7 +12,8 @@ module Heroku::Command
         return -1
       end
 
-      $prog = 'heroku td'
+      puts 'apikey!!!!!!!'
+      p heroku.config_vars(app)['TREASURE_DATA_API_KEY']
 
       method = TreasureData::Command::List.get_method(cmd)
       unless method
