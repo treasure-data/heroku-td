@@ -17,6 +17,8 @@ module Heroku::Command
       ENV['TREASURE_DATA_API_KEY'] = apikey
       p ENV
 
+      TreasureData::Config.apikey = apikey
+
       method = TreasureData::Command::List.get_method(cmd)
       unless method
         $stderr.puts "'#{cmd}' is not a td command. Run '#{$prog}' to show the list."
