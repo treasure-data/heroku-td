@@ -1,3 +1,21 @@
+# 2012/11/16 Kazuki Ohta <k@treasure-data.com>
+# From Dec 2012, Heroku will deprecate `heroku` gem and recommend using Heroku
+# toolbelt. That required us to install `td` gem with `ruby` interpreter, which
+# is bundled with Heroku toolbelt.
+begin
+  require 'td/command/runner'
+rescue LoadError
+  require 'rubygems' unless defined?(gem)
+  require 'rubygems/gem_runner'
+  require 'rubygems/exceptions'
+  begin
+    puts "Installing required gems for 'heroku td'..."
+    Gem::GemRunner.new.run ['install', 'td', '--no-ri', '--no-rdoc']
+  rescue Gem::SystemExitException => e
+    exit e.exit_code
+  end
+end
+
 begin
   require 'td/command/runner'
 rescue LoadError
@@ -5,4 +23,3 @@ rescue LoadError
 end
 
 require File.dirname(__FILE__) + '/lib/heroku/td'
-
