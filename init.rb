@@ -10,7 +10,7 @@ rescue LoadError
   require 'rubygems/exceptions'
   begin
     puts "Installing required gems for 'heroku td'..."
-    Gem::GemRunner.new.run ['install', 'td', '--no-ri', '--no-rdoc', '--version', '0.10.60']
+    Gem::GemRunner.new.run ['install', 'td', '--no-ri', '--no-rdoc', '--version', '0.10.60', '--user-install']
   rescue Gem::SystemExitException => e
     exit e.exit_code
   end
