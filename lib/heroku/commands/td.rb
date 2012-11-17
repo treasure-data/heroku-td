@@ -13,8 +13,8 @@ module Heroku::Command
       end
 
       # this does internet access
-      r.apikey = heroku.config_vars(app)['TREASURE_DATA_API_KEY']
-
+      r.apikey = api.get_config_vars(app).body['TREASURE_DATA_API_KEY']
+      
       r.run args
     end
   end
