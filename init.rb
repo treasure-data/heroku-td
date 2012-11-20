@@ -14,7 +14,7 @@ begin
 rescue LoadError
   begin
     puts "Installing required gems for 'heroku td'..."
-    Gem::GemRunner.new.run ['install', 'td', '--no-ri', '--no-rdoc', '--version', '0.10.60', '--user-install']
+    Gem::GemRunner.new.run ['install', 'td', '--no-ri', '--no-rdoc', '--version', '0.10.61', '--user-install']
   rescue Gem::SystemExitException => e
     exit e.exit_code
   end
