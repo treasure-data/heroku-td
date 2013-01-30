@@ -9,6 +9,7 @@ def install_td_gem
     puts "Installing required gems for 'heroku td'..."
     Gem::GemRunner.new.run ['install', 'td', '--no-ri', '--no-rdoc', '--version', '0.10.61', '--user-install']
   rescue Gem::SystemExitException => e
+    puts "Failed to install td gem: #{e}"
     exit e.exit_code
   end
 end
@@ -19,7 +20,8 @@ begin
   $LOAD_PATH.unshift(Gem.user_dir)
   require 'td/client'
   require 'td/command/runner'
-rescue LoadError
+rescue LoadError => e
+  puts "Failed to load td gem (#{__FILE__}): #{e}"
   install_td_gem()
 end
 
