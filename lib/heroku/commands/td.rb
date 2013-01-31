@@ -1,21 +1,25 @@
 module Heroku::Command
 
-  # manage treasure data hadoop service
+  # manage Treasure Data hadoop service
   class Td < BaseWithApp
     def index
-      r = TreasureData::Command::Runner.new
-      r.prog_name = "#{File.basename($0)} td"
+      r = Heroku::Command::TdCommandRunner.new
+      r.run api.get_config_vars(app).body['TREASURE_DATA_API_KEY'], args
+    end
+  end
 
-      if args.empty?
-        # show usage
-        r.run args
-        exit 0
+  # run td command (http://toolbelt.treasure-data.com/)
+  class TdCommandRunner
+    def run(apikey, args)
+      ENV['TREASURE_DATA_API_KEY'] = apikey
+
+      begin
+        exec("td #{args.join(" ")}")
+      rescue Errno::ENOENT
+        Heroku::Helpers::output_with_bang "Local `td` command could not be located."
+        Heroku::Helpers::output_with_bang "To install `td` command, visit and download it from http://toolbelt.treasure-data.com/"
+        abort
       end
-
-      # this does internet access
-      r.apikey = api.get_config_vars(app).body['TREASURE_DATA_API_KEY']
-      
-      r.run args
     end
   end
 
