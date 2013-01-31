@@ -14,7 +14,7 @@ module Heroku::Command
       ENV['TREASURE_DATA_API_KEY'] = apikey
 
       begin
-        exec("td #{args.join(" ")}")
+        exec("td", *args)
       rescue Errno::ENOENT
         Heroku::Helpers::output_with_bang "Local `td` command could not be located."
         Heroku::Helpers::output_with_bang "To install `td` command, visit and download it from http://toolbelt.treasure-data.com/"
